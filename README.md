@@ -2,4 +2,6 @@
 Repository di supporto per lo studio di sistemi di Visualizzazione delle Informazioni.
 
 
-@related to Information Visualization Course - Roma Tre
+
+--
+Collegato al corso di Information Visualization - @Università degli Studi Roma Tre

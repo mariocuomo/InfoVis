@@ -1,0 +1,54 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+    </head>
+    <body>
+        <div align="center">
+
+            <h1  style="margin-bottom: 0">una palla che rotola</h1>
+            <h3  style="margin-top: 0">SVG</h3>
+
+            <svg height="250" width="320">
+                <defs>
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+
+                <circle 
+                        cx="50" cy="50" r="40" 
+                        stroke="black" 
+                        stroke-width="3" 
+                        fill="url(#grad1)">
+
+                     <animateTransform
+                      attributeType="xml" 
+                      attributeName="transform"
+                      type="translate"
+                      dur="3s"
+                      values="50,0; 100,0; 150,0; 200,0; 150,0; 100,0; 50,0;"
+                      repeatCount="indefinite"/>
+                    <animateTransform attributeName="transform"
+                                  attributeType="XML"
+                                  type="rotate"
+                                  from="0 50 50"
+                                  to="360 50 50"
+                                  dur="3s"
+                                  repeatCount="indefinite"
+                                  additive="sum"/>
+                </circle>
+
+
+                <line x1="50" y1="91" x2="300" y2="91" stroke-width="2" stroke="black" />
+                <line x1="40" y1="91" x2="45" y2="91" stroke-width="1" stroke="black" />
+                <line x1="305" y1="91" x2="310" y2="91" stroke-width="1" stroke="black" />
+      
+    </svg>
+        </div>
+                   
+    </body>
+    </html>

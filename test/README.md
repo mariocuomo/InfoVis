@@ -8,5 +8,5 @@ Questa cartella contiene diversi test personali.
 Questa cartella contiene diversi test personali.
 
 - [SVG](https://github.com/mariocuomo/InfoVis/tree/main/test/SVG)
-- [D3.js - line chart] (https://github.com/mariocuomo/InfoVis/tree/main/test/D3-lineChart)
+- [D3.js - line chart](https://github.com/mariocuomo/InfoVis/tree/main/test/D3-lineChart)
 

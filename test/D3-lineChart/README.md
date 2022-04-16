@@ -9,7 +9,7 @@ NOTA
 helper.py è uno script di supporto per recuperare le informazioni del line chart
 
 <div align="center">
-  <img src="https://github.com/mariocuomo/InfoVis/blob/main/test/imgs/tessere-biblioteca.png" width="300">
+  <img src="https://github.com/mariocuomo/InfoVis/blob/main/test/imgs/tessere-biblioteca.png">
 </div>
 
 

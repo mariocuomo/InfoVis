@@ -15,3 +15,7 @@ Per lanciare il progetto è sufficiente utilizzare qualsiasi tool che avvii un s
 ``` Bash
 python -m http.server
 ```
+
+<div align="center">
+  <img src="https://github.com/mariocuomo/InfoVis/blob/main/progetto1/imgs/casette-in-movimento.gif" width="725" height="400" />
+</div>

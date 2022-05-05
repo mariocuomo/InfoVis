@@ -1,6 +1,6 @@
 # Test
 <div align="center">
-  <img src="https://github.com/mariocuomo/InfoVis/blob/main/test/imgs/casette.png" width="300">
+  <img src="https://github.com/mariocuomo/InfoVis/blob/main/progetto1/imgs/casette.png">
 </div>
 
 L'obiettivo delle visualizzazioni di dati multidimensionali è codificare dati multidimensionali in oggetti grafici con caratteristiche che dipendono dalle caratteristiche di interesse.<br>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+	<title>MINI-PROGETTO INFOVIS</title>
+</head>
+<body>
+	<div align="center">
+		<h1 style="margin-bottom: 0" >INFORMATION VISUALIZATION PROJECT</h1>
+		<h2 style="margin-top: 0;font-weight: normal;margin-bottom: 0;">multidimensional icons to encode multivariate data</h2>
+		<svg width="100%" height="100%" style="border:1px solid black"/>
+	</div>
+
+		<p>The goal of <b>Multidimensional Data Visualizations</b> is to encode multidimensional data into graphic objects with characteristics that depend on the features of interest.<br>
+		In the example we have 10 datacases. Each datacase has 4 positive quantitative variables and an identifier - which for simplicity is a character.<br>
+		Each datacase is represented with a house and the 4 quantitative variables x, y, z, k are encoded respectively to the height, width, height of the roof and garage's width.<br>
+		You can sort the datacases according to the feature you prefer: just left-click on it.<br>
+		Try to click on the roof!<span>&#9786;</span></p>
+	   	
+	   	<hr>
+		<a><b>DATACASES</b></a>
+		<a onclick="javascript:showData()" id="show_hide" style="cursor: pointer;">[+]</a>
+		<table style="display: none;"id="dataCases"></table>
+
+		<footer style="float: right;">
+			<p style="margin-top: 0;color:gray;">&copy; Mario Cuomo</p>
+		</footer>
+
+	<script type="text/javascript" src="chart.js">
+	</script>
+
+</body>
+</html>

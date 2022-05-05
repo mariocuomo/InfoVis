@@ -1,0 +1,72 @@
+[
+    {
+        "altezza" : "5", 
+        "larghezza" : "2", 
+        "tetto" : "5",
+        "garage": "3",
+        "nome" : "A"
+    },
+    {
+        "altezza" : "3", 
+        "larghezza" : "2", 
+        "tetto" : "2",
+        "garage": "5",
+        "nome" : "B"
+    },
+    {
+        "altezza" : "5", 
+        "larghezza" : "4", 
+        "tetto" : "10",
+        "garage": "2",
+        "nome" : "C"
+    },
+    {
+        "altezza" : "2", 
+        "larghezza" : "7", 
+        "tetto" : "4",
+        "garage": "7",
+        "nome" : "D" 
+    },
+    {
+        "altezza" : "4", 
+        "larghezza" : "4", 
+        "tetto" : "3",
+        "garage": "10",
+        "nome" : "E" 
+    },
+    {
+        "altezza" : "3", 
+        "larghezza" : "2", 
+        "tetto" : "6",
+        "garage": "4",
+        "nome" : "F" 
+    },
+    {
+        "altezza" : "3", 
+        "larghezza" : "5", 
+        "tetto" : "1",
+        "garage": "5",
+        "nome" : "G" 
+    },
+    {
+        "altezza" : "8", 
+        "larghezza" : "8", 
+        "tetto" : "7",
+        "garage": "3",
+        "nome" : "H" 
+    },
+    {
+        "altezza" : "6", 
+        "larghezza" : "6", 
+        "tetto" : "9",
+        "garage": "8",
+        "nome" : "I" 
+    },
+    {
+        "altezza" : "1", 
+        "larghezza" : "2", 
+        "tetto" : "8",
+        "garage": "6",
+        "nome" : "L" 
+    }
+]

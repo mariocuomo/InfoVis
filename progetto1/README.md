@@ -1,4 +1,4 @@
-# Test
+# PROGETTO 1
 <div align="center">
   <img src="https://github.com/mariocuomo/InfoVis/blob/main/progetto1/imgs/casette.png">
 </div>

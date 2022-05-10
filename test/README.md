@@ -7,4 +7,6 @@ Questa cartella contiene diversi test personali.
 
 - [SVG](https://github.com/mariocuomo/InfoVis/tree/main/test/SVG)
 - [D3.js - line chart](https://github.com/mariocuomo/InfoVis/tree/main/test/D3-lineChart)
+- [Tutte Algorithm](https://github.com/mariocuomo/InfoVis/tree/main/test/tutte-embedding)
+- [...]
 

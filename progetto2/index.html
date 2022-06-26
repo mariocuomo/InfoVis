@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://d3js.org/d3.v7.min.js"></script>
+		<link rel="stylesheet" href="style.css">
+		<title>HV-DRAWING</title>
+	</head>
+
+	<body>
+		<div id="mySidenav" class="sidenav">
+		  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		  <h2>ALBERO e METODO</h2>
+	      <form>
+			<input type="radio" name="tree" value="data1.json" checked onclick="selezionaMetodoEAlbero()">Binario-OnE<br>
+			<input type="radio" name="tree" value="data2.json" onclick="selezionaMetodoEAlbero()">Binario-TwO<br>
+			<input type="radio" name="tree" value="data3.json" onclick="selezionaMetodoEAlbero()">Binario-ThReE<br>
+			<input type="radio" name="tree" value="data4.json" onclick="selezionaMetodoEAlbero()">N-ario<br>
+			<input type="radio" name="tree" value="data5.json" onclick="selezionaMetodoEAlbero()">Binario-label<br>
+		  </form>
+
+		  <h2>METODO</h2>
+		  <form>
+	        <input type="radio" name="metodo" value="Right heavy" checked onclick="selezionaMetodoEAlbero()">Right heavy<br>
+		    <input type="radio" name="metodo" value="Bottom heavy" onclick="selezionaMetodoEAlbero()">Bottom heavy<br>
+		    <input type="radio" name="metodo" value="Alternate" onclick="selezionaMetodoEAlbero()">Alternate<br>
+		    <input type="radio" name="metodo" value="Eades" onclick="selezionaMetodoEAlbero()">Eades<br>
+		  </form>
+
+	      <h2>INFO</h2>
+	      <p>clicca <i><a href="#">qui</a></i> per maggiori info sull'approccio HV</p>
+  	      <hr>
+  	    <div align="right"> 	
+			<p style="margin-top: 0;color:gray; ">&copy; Mario Cuomo</p>
+		</div>
+		</div>
+
+		<span style="font-size:24px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
+
+		<div align="center">
+			<h1 style="margin-bottom: 0" >HV-DRAWING</h1>
+			<h2 style="margin-top: 0;font-weight: normal;margin-bottom: 0;"  id="algoritmo">ALGORITMO RIGHT-HEAVY (11,2)</h2>
+
+			<svg style="border:1px solid black" height="80vh" width="80vh">
+				  <g id="wrapper" transform="translate(40, 40)"></g>
+			</svg>
+
+			<script type="text/javascript" src="chart.js"></script>
+		</div>
+	</body>
+</html>

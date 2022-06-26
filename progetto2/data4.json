@@ -1,0 +1,47 @@
+{ "val": "A",  
+  "children": [
+    { 
+      "val":"B",
+      "children": [
+        {
+        "val": "D",
+        "children":[]
+        },
+        {
+        "val": "E",
+        "children":[]
+        },
+        {
+        "val": "F",
+        "children":[]
+        },
+        {
+        "val": "G",
+        "children":[]
+        }
+      ]
+    },
+    {
+      "val":"H",
+      "children":[
+        {
+          "val":"I",
+          "children":[]
+        }
+      ]
+    },
+    {
+      "val": "C",
+      "children":[
+        {
+          "val": "L",
+          "children": []
+        },
+        {
+          "val": "M",
+          "children": []
+        }
+      ]
+    }
+  ]
+}

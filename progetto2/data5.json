@@ -1,0 +1,84 @@
+{
+  "val": "A",
+  "peso": 3,
+  "left": {
+    "val": "B",
+    "peso": 25,
+    "left": {
+      "val": "C",
+      "peso": 11,
+      "left": {
+        "val": "D",
+        "peso": 2
+      },
+      "right": {
+        "val": "E",
+         "peso": 32,
+        "right": {
+          "val": "F",
+            "peso": 23,
+          "left": {
+            "val": "G",
+              "peso": 3,
+            "left": {
+              "val": "M",
+                "peso": 8,
+              "left": {
+                "val": "N",
+                  "peso": 12,
+                "right": {
+                  "val": "T",
+                    "peso": 29,
+                  "left": {
+                    "val": "U",
+                      "peso": 11
+                  },
+                  "right": {
+                    "val": "V",
+                      "peso": 19,
+                    "left": {
+                      "val": "Z",
+                        "peso": 15
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "right": {
+            "val": "H",
+              "peso": 23
+          }
+        }
+      }
+    },
+    "right": {
+      "val": "I",
+        "peso": 23,
+      "right": {
+        "val": "L",
+          "peso": 32
+      }
+    }
+  },
+  "right": {
+    "val": "O",
+    "peso":23,
+    "right": {
+      "val": "P",
+      "peso": 11,
+      "left": {
+        "val": "Q",
+        "peso": 5,
+        "left": {
+          "val": "R",
+          "peso": 1
+        },
+        "right": {
+          "val": "S",
+          "peso": 13
+        }
+      }
+    }
+  }
+}

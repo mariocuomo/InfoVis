@@ -1,6 +1,6 @@
 # PROGETTO 2
 <div align="center">
-  <img src="https://github.com/mariocuomo/InfoVis/blob/main/progetto2/imgs/alberi.png">
+  <img src="https://github.com/mariocuomo/InfoVis/blob/main/progetto2/imgs/albero.jpg">
 </div>
 
 Questa cartella contiene un progetto realizzato in Javascript D3.js.<br>

@@ -9,25 +9,34 @@
 	<body>
 		<div id="mySidenav" class="sidenav">
 		  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		  <h2>ALBERO e METODO</h2>
+		  <h2>ALBERO</h2>
 	      <form>
-			<input type="radio" name="tree" value="data1.json" checked onclick="selezionaMetodoEAlbero()">Binario-OnE<br>
+			<input type="radio" name="tree" id ="primoAlbero" value="data1.json" checked onclick="selezionaMetodoEAlbero()">Binario-OnE<br>
 			<input type="radio" name="tree" value="data2.json" onclick="selezionaMetodoEAlbero()">Binario-TwO<br>
 			<input type="radio" name="tree" value="data3.json" onclick="selezionaMetodoEAlbero()">Binario-ThReE<br>
 			<input type="radio" name="tree" value="data4.json" onclick="selezionaMetodoEAlbero()">N-ario<br>
 			<input type="radio" name="tree" value="data5.json" onclick="selezionaMetodoEAlbero()">Binario-label<br>
+
+			<input type="radio" name="tree" value="customBinario" onclick="document.getElementById('fileBinario').click();">Custom-Binario<br>
+			<input type="file" style="display:none;" id="fileBinario" name="file" onchange="caricaFileBinario()"/>
+
+			<input type="radio" name="tree" value="customEnnario" onclick="document.getElementById('fileEnnario').click();">Custom-Nario<br>
+			<input type="file" style="display:none;" id="fileEnnario" name="file" onchange="caricaFileEnnario()"/>
 		  </form>
 
 		  <h2>METODO</h2>
 		  <form>
-	        <input type="radio" name="metodo" value="Right heavy" checked onclick="selezionaMetodoEAlbero()">Right heavy<br>
+	        <input type="radio" id ="primoMetodo" name="metodo" value="Right heavy" checked onclick="selezionaMetodoEAlbero()">Right heavy<br>
 		    <input type="radio" name="metodo" value="Bottom heavy" onclick="selezionaMetodoEAlbero()">Bottom heavy<br>
 		    <input type="radio" name="metodo" value="Alternate" onclick="selezionaMetodoEAlbero()">Alternate<br>
 		    <input type="radio" name="metodo" value="Eades" onclick="selezionaMetodoEAlbero()">Eades<br>
 		  </form>
 
 	      <h2>INFO</h2>
-	      <p>clicca <i><a href="https://github.com/mariocuomo/InfoVis/blob/main/progetto2/HV%20drawing.pdf">qui</a></i> per maggiori info sull'approccio HV</p>
+	      <p>clicca <i><a href="https://github.com/mariocuomo/InfoVis/blob/main/progetto2/HV%20drawing.pdf">qui</a></i> per maggiori info sull'approccio HV<br><br>
+  	      <a href="https://github.com/mariocuomo/InfoVis/blob/main/progetto2"><i>esempi</i></a> di alberi<br>
+
+  	      </p>
   	      <hr>
   	    <div align="right"> 	
 			<p style="margin-top: 0;color:gray; ">&copy; Mario Cuomo</p>

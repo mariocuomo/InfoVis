@@ -1140,8 +1140,8 @@ var deserialize = function (data) {
 FUNZIONE PER CARICARE UN FILE JSON ESTERNO
 RESTTITUISCE UNA STRINGA (il file)
 */
-async function getJSON(treename) {
-	if(treename=='data4.json'){
+async function getJSON(treename,tipo) {
+	if(tipo=='ennario'){
 		return fetch(treename)
         .then((response)=>response.json())
         .then((responseJson)=>{
@@ -1161,12 +1161,14 @@ FUNZIONE MAIN CHE EFFETTUA LE SEGUENTI OPERAZIONI PRINCIPALI
 - DISEGNA LINEE GUIDA
 - CALCOLA POSIZIONI INTERE DEI NODI
 - DISEGNA L'ALBERO
+
+UTILIZZATA PER GLI ALBERI DI DEFAULT
 */
 async function main(treename, metodoname) {
 	tipo=null
 
 	if(treename=='data4.json'){
-		const json = await this.getJSON(treename);
+		const json = await this.getJSON(treename, "ennario");
 	    tree = parse(json)
 
 	    impostaNumeroNodi(tree)
@@ -1175,9 +1177,65 @@ async function main(treename, metodoname) {
     	tipo='ennario'
 	}
 	else{
-		const json = await this.getJSON(treename);
-	    tree = deserialize(json)
-	    tipo='binario'
+		const json = await this.getJSON(treename, "binario");
+	    	tree = deserialize(json)
+	    	tipo='binario'
+    }
+
+	impostaProfondita(tree,0)
+	impostaNumeroNodi(tree)
+
+    numero_nodi = numeroDiNodi(tree)
+	calcolaPosizioni(tree, metodoname)
+
+	massima_componente_altezza_larghezza = Math.max(larghezzaDisegno(tree),altezzaDisegno(tree))
+	disegnaLineeGuida()
+
+	/*
+	questa scala mappa una posizione intera in una posizione nella tela SVG
+	la posizione x=5 è mappata sulla riga verticale 6 - si mantiene un margine a destra e sinistra di una riga
+	*/
+	scale = d3.scaleLinear().domain([0, massima_componente_altezza_larghezza+2]).range([0, larghezza])
+
+	delta_x = Math.round((massima_componente_altezza_larghezza-larghezzaDisegno(tree)+2)/2)
+	delta_y = Math.round((massima_componente_altezza_larghezza-altezzaDisegno(tree)+2)/2)
+
+	if (treename=='data5.json'){
+		disegnaScalaColori(minimoPeso(tree), massimoPeso(tree))
+	}
+
+	disegna(tree,tipo)
+	return tree
+}
+
+/*
+FUNZIONE MAIN CHE EFFETTUA LE SEGUENTI OPERAZIONI PRINCIPALI
+- CARICA FILE JSON E CREA ALBERO
+- DISEGNA LINEE GUIDA
+- CALCOLA POSIZIONI INTERE DEI NODI
+- DISEGNA L'ALBERO
+
+UTILIZZATA PER GLI ALBERI BINARI INSERITI DALL'UTENTE
+*/
+async function mainEnnario(treename, metodoname){
+	tipo="ennario"
+
+	try{
+		const json = await this.getJSON(treename, "ennario");
+		tree = parse(json)
+	    impostaNumeroNodi(tree)
+    	fromNToBinary(tree)
+    	tree = fromNtreeClassToBinaryClass(tree)
+		
+		pulisciSVG()
+	}
+	catch{
+		window.confirm("Hai caricato un file in un formato errato!\nNel menu laterale puoi scaricare degli esempi di file :)");
+		document.getElementById('primoAlbero').checked=true;
+		document.getElementById('primoMetodo').checked=true;
+		pulisciSVG()
+		main('data1.json','Right heavy')
+		return
 	}
 	impostaProfondita(tree,0)
 	impostaNumeroNodi(tree)
@@ -1206,6 +1264,61 @@ async function main(treename, metodoname) {
 }
 
 /*
+FUNZIONE MAIN CHE EFFETTUA LE SEGUENTI OPERAZIONI PRINCIPALI
+- CARICA FILE JSON E CREA ALBERO
+- DISEGNA LINEE GUIDA
+- CALCOLA POSIZIONI INTERE DEI NODI
+- DISEGNA L'ALBERO
+
+UTILIZZATA PER GLI ALBERI N-ARI INSERITI DALL'UTENTE
+*/
+async function mainBinario(treename, metodoname){
+	tipo="binario"
+
+	try{
+		console.log(treename)
+		const json = await this.getJSON(treename, "binario");
+		tree = deserialize(json)
+		console.log(tree)
+		pulisciSVG()
+	}
+	catch{
+		window.confirm("Hai caricato un file in un formato errato!\nNel menu laterale puoi scaricare degli esempi di file :)");
+		document.getElementById('primoAlbero').checked=true;
+		document.getElementById('primoMetodo').checked=true;
+		pulisciSVG()
+		main('data1.json','Right heavy')
+		return
+	}
+
+	impostaProfondita(tree,0)
+	impostaNumeroNodi(tree)
+
+    numero_nodi = numeroDiNodi(tree)
+	calcolaPosizioni(tree, metodoname)
+
+	massima_componente_altezza_larghezza = Math.max(larghezzaDisegno(tree),altezzaDisegno(tree))
+	disegnaLineeGuida()
+
+	/*
+	questa scala mappa una posizione intera in una posizione nella tela SVG
+	la posizione x=5 è mappata sulla riga verticale 6 - si mantiene un margine a destra e sinistra di una riga
+	*/
+	scale = d3.scaleLinear().domain([0, massima_componente_altezza_larghezza+2]).range([0, larghezza])
+
+	delta_x = Math.round((massima_componente_altezza_larghezza-larghezzaDisegno(tree)+2)/2)
+	delta_y = Math.round((massima_componente_altezza_larghezza-altezzaDisegno(tree)+2)/2)
+
+	if (treename=='data5.json'){
+		disegnaScalaColori(minimoPeso(tree), massimoPeso(tree))
+	}
+
+	disegna(tree,tipo)
+	return tree
+}
+
+
+/*
 FUNZIONE DI SUPPORTO PER APERTURA MENU
 */
 function openNav() {
@@ -1221,13 +1334,14 @@ function closeNav() {
 
 /*
 FUNZIONE DI SUPPORTO PER PULIRE LA TELA
-CANCELLA NODI, ARCHI E LINEE GUIDA
+CANCELLA NODI, ARCHI E LINEE GUIDA E ELEMENTI FITTIZI PER ALBERI CUSTOM
 */
 function pulisciSVG(){
     d3.selectAll('.nodes').remove();
     d3.selectAll('.links').remove();
     d3.selectAll('.lineeguida').remove();
     d3.selectAll('.colormap').remove();
+    d3.selectAll('.customTree').remove();
 }
 
 /*
@@ -1244,7 +1358,7 @@ async function selezionaMetodoEAlbero(){
 	for(var i=0; i < radioElements.length; i++)
 	{
 	    if(radioElements[i].checked) 
-	    {
+	    {	
 	        metodo=radioElements[i].value;
 	        break;
 	    }
@@ -1256,6 +1370,22 @@ async function selezionaMetodoEAlbero(){
 	    if(radioElements[i].checked) 
 	    {
 	    	albero = radioElements[i].value
+	        if (albero=='customBinario'){
+	        	var algoritmo = document.getElementById("algoritmo");
+    			algoritmo.textContent = "ALGORITMO "+metodo.toUpperCase()+" ("+larghezzaDisegno(tree)+","+altezzaDisegno(tree)+")"
+
+	        	albero = custom_link
+	        	await mainBinario(albero,metodo);
+	        	return
+	        }
+	        if (albero=='customEnnario' ){
+        	    var algoritmo = document.getElementById("algoritmo");
+    			algoritmo.textContent = "ALGORITMO "+metodo.toUpperCase()+" ("+larghezzaDisegno(tree)+","+altezzaDisegno(tree)+")"
+
+	        	albero = custom_link
+	        	await mainEnnario(albero,metodo);
+	        	return
+	        }
 	        break;
 	    }
 	}
@@ -1398,6 +1528,96 @@ function fromNtreeClassToBinaryClass(tree){
 
 		return _binaryTree
 	}
+}
+
+/*
+FUNZIONE CHE PERMETTE DI CARICARE UN FILE DI UN ALBERO BINARIO
+*/
+function caricaFileBinario() {
+	const fileInput = document.getElementById('fileBinario');
+
+    if (fileInput.value.length) {
+		var fr=new FileReader();
+    	fr.onload=function(){
+    		var contenuto = fr.result
+
+    		var element = document.createElement('a');
+  			element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(contenuto));
+  		
+	  		element.setAttribute('download', 'pippo.txt');
+	  		element.style.display = 'none';
+	  		document.body.appendChild(element);
+
+			var radioElements = document.getElementsByName("metodo");
+		
+			for(var i=0; i < radioElements.length; i++)
+			{
+			    if(radioElements[i].checked) 
+			    {
+			        metodo=radioElements[i].value;
+			        break;
+			    }
+			}
+
+			custom_link = element.href
+  			element.setAttribute('class', 'customTree');
+
+	  		mainBinario(custom_link,metodo)
+		}
+        
+	    fr.readAsText(fileInput.files[0]);
+    }
+    else {
+		document.getElementById('primoAlbero').checked=true;
+		document.getElementById('primoMetodo').checked=true;
+		pulisciSVG()
+		main('data1.json','Right heavy')
+    }
+}
+ 
+/*
+FUNZIONE CHE PERMETTE DI CARICARE UN FILE DI UN ALBERO DI GRADO ARBITRARIO
+*/    
+function caricaFileEnnario() {
+	const fileInput = document.getElementById('fileEnnario');
+
+    if (fileInput.value.length) {
+		var fr=new FileReader();
+    	fr.onload=function(){
+    		var contenuto = fr.result
+
+    		var element = document.createElement('a');
+  			element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(contenuto));
+  		
+	  		element.setAttribute('download', 'pippo.txt');
+	  		element.style.display = 'none';
+	  		document.body.appendChild(element);
+
+			var radioElements = document.getElementsByName("metodo");
+		
+			for(var i=0; i < radioElements.length; i++)
+			{
+			    if(radioElements[i].checked) 
+			    {
+			        metodo=radioElements[i].value;
+			        break;
+			    }
+			}
+
+			custom_link = element.href
+  			element.setAttribute('class', 'customTree');
+
+	  		mainEnnario(custom_link,metodo)
+		}
+        
+	    fr.readAsText(fileInput.files[0]);
+    }
+    else {
+		document.getElementById('primoAlbero').checked=true;
+		document.getElementById('primoMetodo').checked=true;
+		pulisciSVG()
+		main('data1.json','Right heavy')
+    }
 }
 
 

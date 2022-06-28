@@ -941,6 +941,8 @@ function disegna(tree,tipo){
 	lista_nodi = inorder(tree)
 	lista_archi = listaArchi(tree)
 
+	diametro_cercho = larghezza/(massima_componente_altezza_larghezza+2)/8
+
 	var node = svg.append("g")
  		.attr("class", "nodes")
     	.selectAll("g")
@@ -951,7 +953,7 @@ function disegna(tree,tipo){
 		.attr("class", function(d,i){
 			return "nodo"+" "+ "nodo"+d.val
 		})
-		.attr("r", 8)
+		.attr("r", diametro_cercho)
 		.attr("fill", function(d) {
 			if (d.peso!=null){
 				if (d.peso!=0){
@@ -1053,7 +1055,7 @@ function disegna(tree,tipo){
 		.attr("class", function(d,i){
 			return "nodo"+" "+ "nodo"+d.val
 		})
-		.attr("r", 8)
+		.attr("r", diametro_cercho)
 		.attr("fill", function(d) {
 			if (d.peso!=null){
 				if (d.peso!=0){
@@ -1621,6 +1623,22 @@ function caricaFileEnnario() {
 }
 
 
+/*
+RIDIMENSIONA GRAFICO QUANDO SI RIDIMENSIONA LA FINESTRA DEL BROWSER
+*/
+window.addEventListener('resize', async function(event){
+	body = d3.select("body");
+	svg = body.select("svg");
+	larghezza = svg.style("width").replace("px", "");
+	altezza = svg.style("height").replace("px","")
+	
+	pulisciSVG()
+	await selezionaMetodoEAlbero();
+
+	disegna(tree,document.getElementById("algoritmo").textContent)
+})
+
+
 
 /*
 ============
@@ -1637,9 +1655,3 @@ atoms = {}
 
 //avvia la computazione
 main('data1.json','Right heavy')
-
-
-
-
-
-

@@ -1276,10 +1276,8 @@ async function mainBinario(treename, metodoname){
 	tipo="binario"
 
 	try{
-		console.log(treename)
 		const json = await this.getJSON(treename, "binario");
 		tree = deserialize(json)
-		console.log(tree)
 		pulisciSVG()
 	}
 	catch{
@@ -1314,6 +1312,9 @@ async function mainBinario(treename, metodoname){
 	}
 
 	disegna(tree,tipo)
+
+    var algoritmo = document.getElementById("algoritmo");
+    algoritmo.textContent = "ALGORITMO "+metodo.toUpperCase()+" ("+larghezzaDisegno(tree)+","+altezzaDisegno(tree)+")"
 	return tree
 }
 
@@ -1372,18 +1373,17 @@ async function selezionaMetodoEAlbero(){
 	    	albero = radioElements[i].value
 	        if (albero=='customBinario'){
 	        	var algoritmo = document.getElementById("algoritmo");
-    			algoritmo.textContent = "ALGORITMO "+metodo.toUpperCase()+" ("+larghezzaDisegno(tree)+","+altezzaDisegno(tree)+")"
 
 	        	albero = custom_link
 	        	await mainBinario(albero,metodo);
+    			algoritmo.textContent = "ALGORITMO "+metodo.toUpperCase()+" ("+larghezzaDisegno(tree)+","+altezzaDisegno(tree)+")"
 	        	return
 	        }
 	        if (albero=='customEnnario' ){
         	    var algoritmo = document.getElementById("algoritmo");
-    			algoritmo.textContent = "ALGORITMO "+metodo.toUpperCase()+" ("+larghezzaDisegno(tree)+","+altezzaDisegno(tree)+")"
-
 	        	albero = custom_link
 	        	await mainEnnario(albero,metodo);
+    			algoritmo.textContent = "ALGORITMO "+metodo.toUpperCase()+" ("+larghezzaDisegno(tree)+","+altezzaDisegno(tree)+")"
 	        	return
 	        }
 	        break;
